@@ -1,0 +1,97 @@
+- generic [ref=e1]:
+  - region "Cookies on HMRC services" [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e5]:
+        - heading "Cookies on HMRC services" [level=2] [ref=e6]
+        - generic [ref=e7]:
+          - paragraph [ref=e8]: We use some essential cookies to make our services work.
+          - paragraph [ref=e9]: We would like to set additional cookies so we can remember your settings, understand how people use our services and make improvements.
+      - generic [ref=e10]:
+        - button "Accept additional cookies" [ref=e11] [cursor=pointer]
+        - button "Reject additional cookies" [ref=e12] [cursor=pointer]
+        - link "View cookie preferences" [ref=e13] [cursor=pointer]:
+          - /url: https://test-www.tax.service.gov.uk/tracking-consent/cookie-settings?useServiceNavigation
+  - link "Skip to main content" [ref=e14] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e15]:
+    - link "GOV.UK" [ref=e19] [cursor=pointer]:
+      - /url: /
+      - img "GOV.UK" [ref=e20]
+    - region "Service information" [ref=e33]:
+      - link "Submit an Enterprise Investment Scheme (EIS1) compliance statement to HMRC" [ref=e37] [cursor=pointer]:
+        - /url: /submissions/tasklist/tasks/submit-enterprise-investment-scheme-compliance-statement-eis1-to-hmrc/-
+    - paragraph [ref=e40]:
+      - strong [ref=e41]: Beta
+      - generic [ref=e42]:
+        - text: This is a new service - your
+        - link "feedback" [ref=e43] [cursor=pointer]:
+          - /url: /contact/beta-feedback-unauthenticated?service=GForm%2FSubmit%20an%20Enterprise%20Investment%20Scheme%20%28EIS1%29%20compliance%20statement%20to%20HMRC
+        - text: will help us to improve it.
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - heading "Help make GOV.UK better" [level=2] [ref=e47]
+        - link "You could be given a Love2Shop voucher as a thank you for feedback (opens in new tab)" [ref=e48] [cursor=pointer]:
+          - /url: https://survey.take-part-in-research.service.gov.uk/jfe/form/SV_74GjifgnGv6GsMC?Source=BannerList_HMRC_new-form/submit-enterprise-investment-scheme-compliance-statement-eis1-to-hmrc
+      - button "Hide message. I do not want to take part in research" [ref=e49] [cursor=pointer]:
+        - text: Hide message
+        - generic [ref=e50]: Hide message. I do not want to take part in research
+  - main [ref=e52]:
+    - generic [ref=e54]:
+      - generic [ref=e55]:
+        - heading "Sign in to use this service" [level=1] [ref=e57]
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - radio "Sign in to an account to complete this form" [ref=e61] [cursor=pointer]
+            - generic [ref=e62] [cursor=pointer]: Sign in to an account to complete this form
+          - generic [ref=e63]:
+            - radio "Sign in with your email address" [checked] [active] [ref=e64] [cursor=pointer]
+            - generic [ref=e65] [cursor=pointer]: Sign in with your email address
+        - button "Continue" [ref=e66] [cursor=pointer]
+      - link "Is this page not working properly? (opens in new tab)" [ref=e67] [cursor=pointer]:
+        - /url: /contact/report-technical-problem?service=GForm%2FSubmit%20an%20Enterprise%20Investment%20Scheme%20%28EIS1%29%20compliance%20statement%20to%20HMRC
+  - contentinfo [ref=e68]:
+    - generic [ref=e80]:
+      - generic [ref=e81]:
+        - heading "Support links" [level=2] [ref=e82]
+        - list [ref=e83]:
+          - listitem [ref=e84]:
+            - link "Cookies" [ref=e85] [cursor=pointer]:
+              - /url: /help/cookies
+          - listitem [ref=e86]:
+            - link "Accessibility statement" [ref=e87] [cursor=pointer]:
+              - /url: /accessibility-statement/submit-enterprise-investment-scheme-compliance-statement-eis1-to-hmrc
+          - listitem [ref=e88]:
+            - link "Privacy policy" [ref=e89] [cursor=pointer]:
+              - /url: /help/privacy
+          - listitem [ref=e90]:
+            - link "Terms and conditions" [ref=e91] [cursor=pointer]:
+              - /url: /help/terms-and-conditions
+          - listitem [ref=e92]:
+            - link "Help using GOV.UK" [ref=e93] [cursor=pointer]:
+              - /url: https://www.gov.uk/help
+          - listitem [ref=e94]:
+            - link "Contact" [ref=e95] [cursor=pointer]:
+              - /url: https://www.gov.uk/government/organisations/hm-revenue-customs/contact
+          - listitem [ref=e96]:
+            - link "Rhestr o Wasanaethau Cymraeg" [ref=e97] [cursor=pointer]:
+              - /url: https://www.gov.uk/cymraeg
+          - listitem [ref=e98]:
+            - link "New form" [ref=e99] [cursor=pointer]:
+              - /url: /submissions/new-form/submit-enterprise-investment-scheme-compliance-statement-eis1-to-hmrc
+          - listitem [ref=e100]:
+            - link "Toolbox" [ref=e101] [cursor=pointer]:
+              - /url: /submissions/test-only/toolbox/submit-enterprise-investment-scheme-compliance-statement-eis1-to-hmrc
+          - listitem [ref=e102]:
+            - link "Quick save" [ref=e103] [cursor=pointer]:
+              - /url: /submissions/test-only/create-snapshot/submit-enterprise-investment-scheme-compliance-statement-eis1-to-hmrc/-
+          - listitem [ref=e104]:
+            - link "Documentation" [ref=e105] [cursor=pointer]:
+              - /url: https://github.com/hmrc/gform-frontend/wiki
+        - img [ref=e106]
+        - generic [ref=e108]:
+          - text: All content is available under the
+          - link "Open Government Licence v3.0" [ref=e109] [cursor=pointer]:
+            - /url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+          - text: ", except where otherwise stated"
+      - link "© Crown copyright" [ref=e111] [cursor=pointer]:
+        - /url: https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/

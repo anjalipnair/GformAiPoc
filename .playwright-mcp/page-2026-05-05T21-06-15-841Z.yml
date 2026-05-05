@@ -1,0 +1,311 @@
+- generic [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - link "GOV.UK" [ref=e7] [cursor=pointer]:
+      - /url: https://www.gov.uk
+      - img "GOV.UK" [ref=e8]
+  - main [ref=e23]:
+    - generic [ref=e25]:
+      - heading "Authority Wizard" [level=1] [ref=e26]
+      - paragraph [ref=e27]: Complete and submit the form to create a new authority record and attach the bearer token for that user to this session.
+      - generic [ref=e28]:
+        - paragraph [ref=e29]:
+          - button "Submit" [ref=e30] [cursor=pointer]
+        - generic [ref=e31]:
+          - generic [ref=e32]: CredID
+          - generic [ref=e33]: Optional - any random value but it does need to be unique within the Auth database.
+          - textbox "CredID" [ref=e34]
+        - generic [ref=e35]:
+          - generic [ref=e36]: Gateway Token
+          - generic [ref=e37]: Optional - must be Base64-encoded if provided.
+          - textbox "Gateway Token" [ref=e38]
+        - generic [ref=e39]:
+          - generic [ref=e40]: Redirect URL
+          - generic [ref=e41]: The URL to be redirected to when the authentication step is completed.
+          - textbox "Redirect URL" [active] [ref=e42]: /submissions/new-form/submit-enterprise-investment-scheme-compliance-statement-eis1-to-hmrc
+        - generic [ref=e43]:
+          - generic [ref=e44]: Add GNAP Token
+          - generic [ref=e45]:
+            - text: Add GNAP token to MDTP authorisation header. Always try and leave as "Yes". See
+            - link "README" [ref=e46] [cursor=pointer]:
+              - /url: https://github.com/hmrc/auth-login-stub#important-information-for-the-olfgca-integration-and-the-new-gnap-token-support-that-will-be-required
+            - text: for more info.
+          - combobox "Add GNAP Token" [ref=e47]:
+            - option "Yes" [selected]
+            - option "No"
+        - generic [ref=e48]:
+          - generic [ref=e49]: Credential Strength
+          - combobox "Credential Strength" [ref=e50]:
+            - option "strong" [selected]
+            - option "weak"
+            - option "none"
+        - generic [ref=e51]:
+          - generic [ref=e52]: Confidence Level
+          - generic [ref=e53]: Confidence levels greater than 50 require a NINO to be provided.
+          - combobox "Confidence Level" [ref=e54]:
+            - option "50" [selected]
+            - option "200"
+            - option "250"
+            - option "600"
+        - generic [ref=e55]:
+          - generic [ref=e56]: Affinity Group
+          - combobox "Affinity Group" [ref=e57]:
+            - option "Individual"
+            - option "Organisation" [selected]
+            - option "Agent"
+        - generic [ref=e58]:
+          - generic [ref=e59]: Users name
+          - generic [ref=e60]: Optional - defaults to 'TestUser' if not provided
+          - textbox "Users name" [ref=e61]
+        - generic [ref=e62]:
+          - generic [ref=e63]: Email
+          - textbox "Email" [ref=e64]: user@test.com
+        - generic [ref=e65]:
+          - generic [ref=e66]: Credential Role
+          - generic [ref=e67]: Optional - can be set for 'Organisation' or 'Agent' affinity groups only. Otherwise the value will be 'User' (administrator).
+          - combobox "Credential Role" [ref=e68]:
+            - option "User" [selected]
+            - option "Assistant"
+        - generic [ref=e70]:
+          - generic [ref=e71]: OAuth (SCP) Access Token
+          - generic [ref=e72]: Optional - any random access token
+          - textbox "OAuth (SCP) Access Token" [ref=e73]
+        - generic [ref=e74]:
+          - generic [ref=e75]: OAuth (SCP) Refresh Token
+          - generic [ref=e76]: Optional - any random refresh token
+          - textbox "OAuth (SCP) Refresh Token" [ref=e77]
+        - generic [ref=e78]:
+          - generic [ref=e79]: OAuth (SCP) ID Token
+          - generic [ref=e80]: Optional - any random ID token
+          - textbox "OAuth (SCP) ID Token" [ref=e81]
+        - generic [ref=e83]:
+          - generic [ref=e84]: SCP profile url
+          - generic [ref=e85]: Optional - a URL
+          - textbox "SCP profile url" [ref=e86]
+        - generic [ref=e87]:
+          - generic [ref=e88]: SCP group profile url
+          - generic [ref=e89]: Optional - a URL
+          - textbox "SCP group profile url" [ref=e90]
+        - generic [ref=e91]:
+          - generic [ref=e92]: SCP user email is verified
+          - combobox "SCP user email is verified" [ref=e93]:
+            - option "N/A" [selected]
+            - option "False"
+            - option "True"
+        - generic [ref=e95]:
+          - generic [ref=e96]: NINO
+          - generic [ref=e97]: Optional - any valid formatted Nino, this is required for an Individual with a confidence level of 100 or greater
+          - textbox "NINO" [ref=e98]
+        - generic [ref=e99]:
+          - generic [ref=e100]: Group Identifier
+          - generic [ref=e101]: Optional - any random value
+          - textbox "Group Identifier" [ref=e102]
+        - generic [ref=e103]:
+          - generic [ref=e104]: Agent ID
+          - generic [ref=e105]: Optional - any random value
+          - textbox "Agent ID" [ref=e106]
+        - generic [ref=e107]:
+          - generic [ref=e108]: Agent code
+          - generic [ref=e109]: Optional - any random value
+          - textbox "Agent code" [ref=e110]
+        - generic [ref=e111]:
+          - generic [ref=e112]: Agent friendly name
+          - generic [ref=e113]: Optional - any random value
+          - textbox "Agent friendly name" [ref=e114]
+        - generic [ref=e115]:
+          - generic [ref=e116]: Unread message count
+          - generic [ref=e117]: Optional - any numeric value
+          - textbox "Unread message count" [ref=e118]
+        - generic [ref=e119]:
+          - generic [ref=e120]: Session ID
+          - generic [ref=e121]: Optional when Device ID is empty
+          - textbox "Session ID" [ref=e122]
+        - generic [ref=e123]:
+          - generic [ref=e124]: Device ID
+          - generic [ref=e125]: Optional when Session ID is empty
+          - textbox "Device ID" [ref=e126]
+        - button "Submit" [ref=e127] [cursor=pointer]
+        - heading "Enrolments:" [level=2] [ref=e128]
+        - generic [ref=e129]:
+          - text: Presets
+          - combobox "Presets" [ref=e130]:
+            - option "SA" [selected]
+            - option "CT"
+            - option "VAT"
+            - option "ATED"
+            - option "AWRS"
+            - option "PSA"
+            - option "SA Agent"
+            - option "EPAYE"
+            - option "EI"
+            - option "NI"
+        - button "Add preset" [ref=e131] [cursor=pointer]
+        - generic [ref=e132]:
+          - generic [ref=e133]: "!"
+          - strong [ref=e134]:
+            - generic [ref=e135]: Warning
+            - text: Enrolments with no Enrolment Key field specified will be ignored
+        - generic [ref=e136]:
+          - table [ref=e137]:
+            - rowgroup [ref=e138]:
+              - row "Enrolment Key Identifier Name Identifier Value Status" [ref=e139]:
+                - columnheader "Enrolment Key" [ref=e140]
+                - columnheader "Identifier Name" [ref=e141]
+                - columnheader "Identifier Value" [ref=e142]
+                - columnheader [ref=e143]
+                - columnheader [ref=e144]
+                - columnheader "Status" [ref=e145]
+              - row "+ - Activated" [ref=e146]:
+                - cell [ref=e147]:
+                  - textbox [ref=e149]
+                - cell [ref=e150]:
+                  - textbox [ref=e152]
+                - cell [ref=e153]:
+                  - textbox [ref=e155]
+                - cell "+" [ref=e156]:
+                  - button "+" [ref=e157] [cursor=pointer]
+                - cell "-" [ref=e158]:
+                  - button "-" [disabled] [ref=e159] [cursor=pointer]
+                - cell "Activated" [ref=e160]:
+                  - combobox [ref=e162]:
+                    - option "Activated" [selected]
+                    - option "NotYetActivated"
+                    - option "Pending"
+                    - option "HandedToAgent"
+              - row "+ - Activated" [ref=e163]:
+                - cell [ref=e164]:
+                  - textbox [ref=e166]
+                - cell [ref=e167]:
+                  - textbox [ref=e169]
+                - cell [ref=e170]:
+                  - textbox [ref=e172]
+                - cell "+" [ref=e173]:
+                  - button "+" [ref=e174] [cursor=pointer]
+                - cell "-" [ref=e175]:
+                  - button "-" [disabled] [ref=e176] [cursor=pointer]
+                - cell "Activated" [ref=e177]:
+                  - combobox [ref=e179]:
+                    - option "Activated" [selected]
+                    - option "NotYetActivated"
+                    - option "Pending"
+                    - option "HandedToAgent"
+              - row "+ - Activated" [ref=e180]:
+                - cell [ref=e181]:
+                  - textbox [ref=e183]
+                - cell [ref=e184]:
+                  - textbox [ref=e186]
+                - cell [ref=e187]:
+                  - textbox [ref=e189]
+                - cell "+" [ref=e190]:
+                  - button "+" [ref=e191] [cursor=pointer]
+                - cell "-" [ref=e192]:
+                  - button "-" [disabled] [ref=e193] [cursor=pointer]
+                - cell "Activated" [ref=e194]:
+                  - combobox [ref=e196]:
+                    - option "Activated" [selected]
+                    - option "NotYetActivated"
+                    - option "Pending"
+                    - option "HandedToAgent"
+              - row "+ - Activated" [ref=e197]:
+                - cell [ref=e198]:
+                  - textbox [ref=e200]
+                - cell [ref=e201]:
+                  - textbox [ref=e203]
+                - cell [ref=e204]:
+                  - textbox [ref=e206]
+                - cell "+" [ref=e207]:
+                  - button "+" [ref=e208] [cursor=pointer]
+                - cell "-" [ref=e209]:
+                  - button "-" [disabled] [ref=e210] [cursor=pointer]
+                - cell "Activated" [ref=e211]:
+                  - combobox [ref=e213]:
+                    - option "Activated" [selected]
+                    - option "NotYetActivated"
+                    - option "Pending"
+                    - option "HandedToAgent"
+          - button "Add Enrolment" [ref=e214] [cursor=pointer]
+        - generic [ref=e215]:
+          - heading "Delegated Enrolments:" [level=3] [ref=e216]
+          - table [ref=e217]:
+            - rowgroup [ref=e218]:
+              - row "Delegated Enrolment Key Identifier Name Identifier Value Delegated Auth Rule" [ref=e219]:
+                - columnheader "Delegated Enrolment Key" [ref=e220]
+                - columnheader "Identifier Name" [ref=e221]
+                - columnheader "Identifier Value" [ref=e222]
+                - columnheader [ref=e223]
+                - columnheader [ref=e224]
+                - columnheader "Delegated Auth Rule" [ref=e225]
+          - button "Add Delegated Enrolment" [ref=e226] [cursor=pointer]
+          - button "Remove Delegated Enrolment" [ref=e227] [cursor=pointer]
+        - button "Submit" [ref=e228] [cursor=pointer]
+        - heading "ITMP data:" [level=2] [ref=e229]
+        - generic [ref=e230]:
+          - generic [ref=e231]: Given name
+          - textbox "Given name" [ref=e232]
+        - generic [ref=e233]:
+          - generic [ref=e234]: Middle name
+          - textbox "Middle name" [ref=e235]
+        - generic [ref=e236]:
+          - generic [ref=e237]: Family name
+          - textbox "Family name" [ref=e238]
+        - generic [ref=e239]:
+          - generic [ref=e240]: Date of birth
+          - textbox "Date of birth" [ref=e241]
+        - paragraph [ref=e242]: "Address:"
+        - generic [ref=e243]:
+          - generic [ref=e244]: Line 1
+          - textbox "Line 1" [ref=e245]
+        - generic [ref=e246]:
+          - generic [ref=e247]: Line 2
+          - textbox "Line 2" [ref=e248]
+        - generic [ref=e249]:
+          - generic [ref=e250]: Line 3
+          - textbox "Line 3" [ref=e251]
+        - generic [ref=e252]:
+          - generic [ref=e253]: Line 4
+          - textbox "Line 4" [ref=e254]
+        - generic [ref=e255]:
+          - generic [ref=e256]: Line 5
+          - textbox "Line 5" [ref=e257]
+        - generic [ref=e258]:
+          - generic [ref=e259]: Post code
+          - textbox "Post code" [ref=e260]
+        - generic [ref=e261]:
+          - generic [ref=e262]: Country name
+          - textbox "Country name" [ref=e263]
+        - generic [ref=e264]:
+          - generic [ref=e265]: Country code
+          - textbox "Country code" [ref=e266]
+        - button "Submit" [ref=e267] [cursor=pointer]
+  - contentinfo [ref=e268]:
+    - generic [ref=e280]:
+      - generic [ref=e281]:
+        - heading "Support links" [level=2] [ref=e282]
+        - list [ref=e283]:
+          - listitem [ref=e284]:
+            - link "Cookies" [ref=e285] [cursor=pointer]:
+              - /url: /help/cookies
+          - listitem [ref=e286]:
+            - link "Privacy policy" [ref=e287] [cursor=pointer]:
+              - /url: /help/privacy
+          - listitem [ref=e288]:
+            - link "Terms and conditions" [ref=e289] [cursor=pointer]:
+              - /url: /help/terms-and-conditions
+          - listitem [ref=e290]:
+            - link "Help using GOV.UK" [ref=e291] [cursor=pointer]:
+              - /url: https://www.gov.uk/help
+          - listitem [ref=e292]:
+            - link "Contact" [ref=e293] [cursor=pointer]:
+              - /url: https://www.gov.uk/government/organisations/hm-revenue-customs/contact
+          - listitem [ref=e294]:
+            - link "Rhestr o Wasanaethau Cymraeg" [ref=e295] [cursor=pointer]:
+              - /url: https://www.gov.uk/cymraeg
+        - img [ref=e296]
+        - generic [ref=e298]:
+          - text: All content is available under the
+          - link "Open Government Licence v3.0" [ref=e299] [cursor=pointer]:
+            - /url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+          - text: ", except where otherwise stated"
+      - link "© Crown copyright" [ref=e301] [cursor=pointer]:
+        - /url: https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/
