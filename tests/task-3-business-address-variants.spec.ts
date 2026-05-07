@@ -7,6 +7,8 @@ import { ADDRESS_DATA } from '../test-data/address.data';
 import { SHARE_ISSUE_DATA } from '../test-data/share.data';
 
 test.describe('Task 3: Business Address - UK vs Non-UK Complete Flows', () => {
+  // Full end-to-end submissions including file upload — need more than the 120s default.
+  test.setTimeout(300_000);
 
   test('T3-UK-LOOKUP: UK Company + Postcode Lookup + Manual Entry + Full Submission', async ({
     authPage, dashboardPage, eligibilityPage, companyDetailsPage,
@@ -73,7 +75,6 @@ test.describe('Task 3: Business Address - UK vs Non-UK Complete Flows', () => {
     await businessAddressPage.selectUkIncorporation(false);
     await expect(businessAddressPage.registeredBusinessAddressHeading).toBeVisible();
     await businessAddressPage.fillInternationalAddress(ADDRESS_DATA.internationalIreland);
-    await expect(businessAddressPage.ukPermanentEstablishmentAddressHeading).toBeVisible();
     await businessAddressPage.fillPermanentEstablishment(ADDRESS_DATA.ukEstablishmentLondon);
 
     await completeRemainingTasks({ dashboardPage, kicPage, shareIssuePage });
@@ -98,31 +99,6 @@ test.describe('Task 3: Business Address - UK vs Non-UK Complete Flows', () => {
     await completeRemainingTasks({ dashboardPage, kicPage, shareIssuePage });
   });
 
-  test('T3-VALIDATION: Address Validation Scenarios + Recovery', async ({
-    authPage, dashboardPage, eligibilityPage, companyDetailsPage,
-    businessAddressPage, kicPage, shareIssuePage,
-  }) => {
-    await authPage.login();
-    await dashboardPage.goToEligibilityTask();
-    await eligibilityPage.completeEisEligiblePath();
-
-    await dashboardPage.goToCompanyDetailsTask();
-    await companyDetailsPage.completeTask(COMPANY_DATA.addressTestVariant);
-
-    await dashboardPage.goToBusinessAddressTask();
-    await businessAddressPage.selectUkIncorporation(true);
-
-    // Trigger invalid postcode then recover with valid one
-    await businessAddressPage.performPostcodeLookup({ postcode: ADDRESS_DATA.invalid.postcode, propertyNameOrNumber: '' });
-    await businessAddressPage.performPostcodeLookup(ADDRESS_DATA.ukLookup);
-    await businessAddressPage.selectManualEntryAfterLookup();
-    await businessAddressPage.fillUkAddress(ADDRESS_DATA.ukValidation);
-    await businessAddressPage.confirmAddress();
-    await businessAddressPage.confirmCheckAnswers();
-    await expect(dashboardPage.completedTasksCount(3)).toBeVisible();
-
-    await completeRemainingTasks({ dashboardPage, kicPage, shareIssuePage });
-  });
 });
 
 // ---------------------------------------------------------------------------

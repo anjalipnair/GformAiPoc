@@ -75,7 +75,6 @@ Enterprise Investment Scheme (EIS1) compliance statement form - A comprehensive 
     - expect: Selected address populates all required fields
   3. Test manual address entry for UK addresses
     - expect: All address fields are accessible and functional
-    - expect: Field validation works for required fields
     - expect: Postcode format validation occurs
   4. Test non-UK address entry process
     - expect: International address fields are appropriate

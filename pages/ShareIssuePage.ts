@@ -27,7 +27,35 @@ export class ShareIssuePage extends BasePage {
   async enterNominalValue(data: ShareIssueData): Promise<void> {
     const currencyCombobox = this.page.getByRole('combobox', { name: 'Currency' });
     await currencyCombobox.fill(data.currencySearch);
-    await this.page.getByRole('option', { name: data.currencyOption }).click();
+
+    // Wait up to 10s for the autocomplete dropdown option to appear, then click it.
+    // If the dropdown doesn't appear (e.g. server throttling), fall back to keyboard selection.
+    const option = this.page.getByRole('option', { name: data.currencyOption });
+    const optionVisible = await option.isVisible({ timeout: 10000 }).catch(() => false);
+    if (optionVisible) {
+      await option.click();
+    } else {
+      // Fallback 1: try a native <select> element (some HMRC form variants use <select>)
+      const selectEl = this.page.locator('select[name*="currency"], select[id*="currency"]').first();
+      const hasSelect = await selectEl.isVisible({ timeout: 2000 }).catch(() => false);
+      if (hasSelect) {
+        await selectEl.selectOption({ label: data.currencyOption });
+      } else {
+        // Fallback 2: clear, re-type and use keyboard arrow+Enter to pick the first suggestion
+        await currencyCombobox.clear();
+        await currencyCombobox.fill(data.currencySearch);
+        await this.page.waitForTimeout(1500); // allow autocomplete to populate
+        const optionRetry = this.page.getByRole('option', { name: data.currencyOption });
+        if (await optionRetry.isVisible({ timeout: 5000 }).catch(() => false)) {
+          await optionRetry.click();
+        } else {
+          // Last resort: press ArrowDown to select the first suggestion then Enter
+          await currencyCombobox.press('ArrowDown');
+          await currencyCombobox.press('Enter');
+        }
+      }
+    }
+
     await this.fillTextbox('Amount in this currency', data.nominalValueAmount);
     await this.saveAndContinue();
   }

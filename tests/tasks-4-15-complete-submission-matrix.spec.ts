@@ -8,6 +8,9 @@ import { SHARE_ISSUE_DATA } from '../test-data/share.data';
 
 test.describe('Tasks 4-15: Complete Form Submission Matrix', () => {
   test.describe.configure({ mode: 'serial' });
+  // These tests cover tasks 1-15 end-to-end including file uploads, so they
+  // need more time than the default 120 s global timeout.
+  test.setTimeout(300_000); // 5 minutes
 
   test('T4-KIC-NO: Knowledge-Intensive Companies = No + Complete Submission', async ({
     authPage, dashboardPage, eligibilityPage, companyDetailsPage,
@@ -31,9 +34,9 @@ test.describe('Tasks 4-15: Complete Form Submission Matrix', () => {
 
     await dashboardPage.goToKicTask();
     await kicPage.completeTask(true);
-    // KIC=Yes ends via evidence file upload which returns to the task list with the
-    // KIC task marked "In progress".  Tasks 1-3 remain completed (count = 3).
-    await expect(dashboardPage.completedTasksCount(3)).toBeVisible();
+    // KIC=Yes goes through follow-up questions and an evidence file upload, then
+    // returns to the task list with the KIC task marked "Completed" (count = 4).
+    await expect(dashboardPage.completedTasksCount(4)).toBeVisible();
 
     await completeFullFormSubmission({ dashboardPage, shareIssuePage, tasks6to15Page });
   });
@@ -125,72 +128,86 @@ async function completeFullFormSubmission(pages: {
       tasksCompleted = 6;
       console.log('✅ Task 6 (Previous Investments) completed');
     } catch (error) {
-      console.log('⚠️  Task 6 failed, continuing with remaining tasks');
+      console.log(`⚠️  Task 6 failed: ${error instanceof Error ? error.message.split('\n')[0] : error}`);
     }
 
     // Task 7: Qualifying Business Activity  
     try {
+      await dashboardPage.goToTaskList();
       await dashboardPage.goToQualifyingBusinessActivityTask();
       await tasks6to15Page.completeQualifyingBusinessActivity();
       tasksCompleted = 7;
       console.log('✅ Task 7 (Qualifying Business Activity) completed');
     } catch (error) {
-      console.log('⚠️  Task 7 failed, continuing with remaining tasks');
+      console.log(`⚠️  Task 7 failed: ${error instanceof Error ? error.message.split('\n')[0] : error}`);
     }
 
     // Task 8: Risk to Capital
     try {
+      await dashboardPage.goToTaskList();
       await dashboardPage.goToRiskToCapitalTask();
       await tasks6to15Page.completeRiskToCapital();
       tasksCompleted = 8;
       console.log('✅ Task 8 (Risk to Capital) completed');
     } catch (error) {
-      console.log('⚠️  Task 8 failed, continuing with remaining tasks');
+      console.log(`⚠️  Task 8 failed: ${error instanceof Error ? error.message.split('\n')[0] : error}`);
     }
 
-    // Tasks 9-11: Grouped for efficiency
+    // Tasks 9-11: each navigated explicitly from task list
     try {
+      await dashboardPage.goToTaskList();
+      await dashboardPage.goToMaximumPermittedAgeTask();
       await tasks6to15Page.completeMaximumPermittedAge();
+      console.log('✅ Task 9 (Maximum Permitted Age) completed');
+      await dashboardPage.goToTaskList();
+      await dashboardPage.goToControlAndIndependenceTask();
       await tasks6to15Page.completeControlAndIndependence();
+      console.log('✅ Task 10 (Control and Independence) completed');
+      await dashboardPage.goToTaskList();
+      await dashboardPage.goToCompanyAssetsTask();
       await tasks6to15Page.completeCompanyAssetsAndEmployeeLimits();
       tasksCompleted = 11;
-      console.log('✅ Tasks 9-11 completed');
+      console.log('✅ Task 11 (Company Assets and Employee Limits) completed');
     } catch (error) {
-      console.log('⚠️  Tasks 9-11 failed, continuing with remaining tasks');
+      console.log(`⚠️  Tasks 9-11 failed: ${error instanceof Error ? error.message.split('\n')[0] : error}`);
     }
 
     // Task 12: Supporting Documents (high failure risk due to file uploads)
     try {
+      await dashboardPage.goToTaskList();
       await dashboardPage.goToSupportingDocumentsTask();
       await tasks6to15Page.completeSupportingDocuments();
       tasksCompleted = 12;
       console.log('✅ Task 12 (Supporting Documents) completed');
     } catch (error) {
-      console.log('⚠️  Task 12 (Supporting Documents) failed - likely file upload requirement');
+      console.log(`⚠️  Task 12 (Supporting Documents) failed: ${error instanceof Error ? error.message.split('\n')[0] : error}`);
     }
 
     // Task 13: About You
     try {
+      await dashboardPage.goToTaskList();
       await dashboardPage.goToAboutYouTask();
       await tasks6to15Page.completeAboutYou();
       tasksCompleted = 13;
       console.log('✅ Task 13 (About You) completed');
     } catch (error) {
-      console.log('⚠️  Task 13 failed, attempting declaration');
+      console.log(`⚠️  Task 13 failed: ${error instanceof Error ? error.message.split('\n')[0] : error}`);
     }
 
     // Task 14: Declaration
     try {
+      await dashboardPage.goToTaskList();
       await dashboardPage.goToDeclarationTask();
       await tasks6to15Page.completeDeclaration();
       tasksCompleted = 14;
       console.log('✅ Task 14 (Declaration) completed');
     } catch (error) {
-      console.log('⚠️  Task 14 (Declaration) failed, attempting final submission');
+      console.log(`⚠️  Task 14 (Declaration) failed: ${error instanceof Error ? error.message.split('\n')[0] : error}`);
     }
 
     // Task 15: Final Submission (ultimate goal)
     try {
+      await dashboardPage.goToTaskList();
       await dashboardPage.goToFinalSubmissionTask();
       await tasks6to15Page.completeFinalSubmission();
       

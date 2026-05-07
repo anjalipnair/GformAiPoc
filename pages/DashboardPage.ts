@@ -100,6 +100,35 @@ export class DashboardPage extends BasePage {
     await this.clickLink('Risk to capital');
   }
 
+  /** Navigate to the Maximum Permitted Age task. */
+  async goToMaximumPermittedAgeTask(): Promise<void> {
+    await this.clickLink('Maximum permitted age');
+  }
+
+  /** Navigate to the Control and Independence task. */
+  async goToControlAndIndependenceTask(): Promise<void> {
+    await this.clickLink('Control and independence');
+  }
+
+  /** Navigate to the Company Assets and Employee Limits task. */
+  async goToCompanyAssetsTask(): Promise<void> {
+    // Try exact link text first, then increasingly flexible patterns
+    const strategies = [
+      () => this.page.getByRole('link', { name: 'Company assets and employee limits' }),
+      () => this.page.getByRole('link', { name: /company assets/i }),
+      () => this.page.getByRole('link', { name: /employee limits/i }),
+      () => this.page.locator('a[href*="company-assets"], a[href*="asset"], a[href*="employee"]').first(),
+    ];
+    for (const strategy of strategies) {
+      const locator = strategy();
+      if (await locator.isVisible({ timeout: 3000 }).catch(() => false)) {
+        await locator.click();
+        return;
+      }
+    }
+    await this.clickLink('Company assets and employee limits');
+  }
+
   /** Navigate to the Supporting Documents task. */
   async goToSupportingDocumentsTask(): Promise<void> {
     await this.clickLink('Your supporting documents');
@@ -112,6 +141,18 @@ export class DashboardPage extends BasePage {
 
   /** Navigate to the Declaration task. */
   async goToDeclarationTask(): Promise<void> {
+    const strategies = [
+      () => this.page.getByRole('link', { name: 'Your declaration' }),
+      () => this.page.getByRole('link', { name: /declaration/i }),
+      () => this.page.locator('a[href*="declaration"]').first(),
+    ];
+    for (const strategy of strategies) {
+      const locator = strategy();
+      if (await locator.isVisible({ timeout: 3000 }).catch(() => false)) {
+        await locator.click();
+        return;
+      }
+    }
     await this.clickLink('Your declaration');
   }
 
