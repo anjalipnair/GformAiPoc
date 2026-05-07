@@ -165,15 +165,9 @@ export class Tasks6to15Page extends BasePage {
   async completeSupportingDocuments(): Promise<void> {
     try {
       const fileUploadHelper = new FileUploadHelper(this.page);
-
-      // Detect whether a file upload page is present before attempting upload
-      const uploadHeading = this.page.getByRole('heading', { name: /supporting document|upload.*document/i });
-      const hasUploadPage = await uploadHeading.isVisible({ timeout: 5000 }).catch(() => false);
-
-      if (hasUploadPage) {
-        await fileUploadHelper.handleUploadPageGracefully('pdf');
-      } else {
-        // No upload page – click Save and continue only if the button is present
+      const uploadHandled = await fileUploadHelper.handleUploadPageGracefully('pdf');
+      if (!uploadHandled) {
+        // Only click Save and continue if the button is actually present on the page
         const saveBtn = this.page.getByRole('button', { name: /save.*continue/i });
         const hasSave = await saveBtn.isVisible({ timeout: 5000 }).catch(() => false);
         if (hasSave) {
