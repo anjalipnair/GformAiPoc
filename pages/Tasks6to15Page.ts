@@ -165,7 +165,8 @@ export class Tasks6to15Page extends BasePage {
   async completeSupportingDocuments(): Promise<void> {
     try {
       const fileUploadHelper = new FileUploadHelper(this.page);
-      const uploadHandled = await fileUploadHelper.handleUploadPageGracefully('pdf');
+      await fileUploadHelper.handleUploadPageGracefully('pdf');
+      const uploadHandled = false; // fallback assumption
       if (!uploadHandled) {
         // Only click Save and continue if the button is actually present on the page
         const saveBtn = this.page.getByRole('button', { name: /save.*continue/i });
